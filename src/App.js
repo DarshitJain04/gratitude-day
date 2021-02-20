@@ -1,9 +1,9 @@
-import './App.css';
+import "./App.css";
 
 function App() {
 	return (
 		<div className="App">
-			<h1>SWC presents Gratitude Day</h1>
+			<h1>Gratitude Day</h1>
 		</div>
 	);
 }

@@ -1,0 +1,28 @@
+.navbar {
+    background-color: #FFFFFF;
+}
+
+#delete.btn-floating.btn-small .fa, #delete.btn-floating.btn-small .material-icons, #delete.btn-floating.wishlist .fa, #delete.btn-floating.wishlist .material-icons, #delete.card .card-share .social-reveal .btn-floating .fa, #delete.card .card-share .social-reveal .btn-floating .material-icons {
+    margin-top: 0 !important;
+}
+
+.top-fixer-2 {
+    height: 4.5rem;
+}
+
+.top-fixer-2.login {
+    height: 8rem;
+}
+
+.navbar-brand.img-logo {
+    height: inherit;
+}
+
+img.img-logo {
+    height: 2rem;
+    margin-right: .7rem;
+}
+
+#contact.page-footer{
+    margin-top: 0;
+}

@@ -1,43 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta property="og:description"
+		content="Student Wellbeing Committee IITJ. Checklist and forms for IIT Jodhpur. Ask any Query regarding admission at IIT Jodhpur and about Life at IIT Jodhpur" />
+	<meta property="og:image" content="http://cs.iitj.ac.in/images/logo_og.jpg" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="theme-color" content="#D3D3D3">
+	<meta name="title" content="Student Wellbeing Committee - IIT Jodhpur">
+	<meta name="description"
+		content=" IITJ. Checklist and forms for IIT Jodhpur. Ask any Query regarding admission at IIT Jodhpur and about Life at IIT Jodhpur">
+	<meta name="robots" CONTENT="index, follow">
+	<meta name="keywords"
+		content="IITJ,FAQs, IIT Jodhpur, , CS IITJ, CS, IIT, Jodhpur, Query, JEE Advance, Life in IITJ, Indian Institute of Technology Jodhpur" />
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="css/compiled.min.css" rel="stylesheet">
+	<!-- Your custom styles (optional) -->
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="shortcut icon" href="images/logo.png">
+</head>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<head>
+	<title>Activities - Mr./Ms. Freshers</title>
+	<style>
+		.navbar-margin {
+			margin-top: 6rem;
+		}
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
-</html>
+		.video-container {
+			height: auto;
+			padding: 0.5rem;
+			flex-wrap: wrap;
+		}
+
+		.video-entry {
+			justify-content: center;
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 36px;
+		}
+
+		.video-entry>.iframe-holder {
+			overflow: hidden;
+			position: relative;
+			width: 100%;
+			height: 280px;
+			border-radius: 16px;
+		}
+
+		.video-entry>.iframe-holder>iframe {
+			border: 0;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		.video-entry>.name {
+			font-family: 'Roboto';
+			margin-top: 20px;
+			font-weight: bold;
+			text-transform: capitalize;
+		}
+
+		.video-entry>.branch {
+			font-family: 'Roboto';
+			font-size: 12px;
+		}
+
+		.video-entry>iframe {
+			border-radius: 16px;
+		}
+
+		.page-bar {
+			margin: 6px;
+		}
+	</style>
+</head>
+
+<body>
+	<!--Navbar-->
+	<!--Navbar-->
+	<nav id="nav" class="navbar navbar-toggleable-md noscroll navbar-light fixed-top">
+		<div class="container">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1"
+				aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" href="index.php">
+				<img src="images/logo.png" class="img-logo"><strong>Student Wellbeing Committee</strong>
+			</a>
+			<div>
+				<div class="collapse navbar-collapse" id="navbarNav1" style="width: max-content">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item" id="nav-1">
+							<a class="nav-link" href="index.php">Home</span></a>
+						</li>
+						<li class="nav-item dropdown btn-group" id="nav-2">
+							<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Team</a>
+							<ul class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+								<li><a class="dropdown-item" id="nav-2-1" href="counsellors_team.php">Counsellors Team</a></li>
+								<li><a class="dropdown-item" id="nav-2-2" href="faculty_advisors.php">Faculty Advisors</a></li>
+								<li class="dropdown-submenu">
+									<a class="dropdown-item" id="nav-2-3">Student Team</a>
+									<ul class="dropdown-menu">
+										<a class="dropdown-item" href="cs_team_ug2020.php">UG Team</a>
+										<a class="dropdown-item" href="cs_team_pg.php">PG Team</a>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown btn-group" id="nav-8">
+							<a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Activities</a>
+							<ul class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+								<li><a class="dropdown-item" id="nav-8-1" href="activities_pmr.php">General</a></li>
+								<li><a class="dropdown-item" id="nav-8-2" href="activities.php">Orientations</a></li>
+								<li class="dropdown-submenu">
+									<a class="dropdown-item" id="nav-8-3">Freshanza</a>
+									<ul class="dropdown-menu">
+										<a class="dropdown-item" href="mr_msfreshers.php">Mr./Ms. Freshers</a>
+										<a class="dropdown-item" href="freshers_grp_performance.php">Group Performance</a>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown btn-group" id="nav-3">
+							<a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Life @ IITJ</a>
+							<div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+								<a class="dropdown-item" id="nav-3-1" href="societies.php">Societies</a>
+								<a class="dropdown-item" id="nav-3-2" href="committees.php">Committees</a>
+								<a class="dropdown-item" id="nav-3-3" href="festivals.php">Festivals</a>
+								<a class="dropdown-item" id="nav-3-4" target="_blank" href="http://spc.iitj.ac.in/">Career Development
+									Cell (Placement Cell)</a>
+								<a class="dropdown-item" id="nav-3-5" href="hostel.php">Hostels @IITJ</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown btn-group" id="nav-4">
+							<a class="nav-link dropdown-toggle" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">FAQs</a>
+							<div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu3">
+								<a href="general_faqs.php" id="nav-4-1" class="dropdown-item">General FAQs</a>
+								<a href="academics_faqs.php" id="nav-4-2" class="dropdown-item">Academics FAQs</a>
+								<a href="registration_faqs.php" id="nav-4-3" class="dropdown-item">Registration FAQs</a>
+								<a href="hostel_mess_faqs.php" id="nav-4-4" class="dropdown-item">Hostel/Mess FAQs</a>
+								<a href="misc_faqs.php" id="nav-4-5" class="dropdown-item">Misc FAQs</a>
+							</div>
+						</li>
+						<li class="nav-item" id="nav-5">
+							<a class="nav-link" href="gallery.php">Gallery</a>
+						</li>
+						<!-- <li class="nav-item" id="nav-6">
+											<a class="nav-link" href="map/index.html">Hotel map</a>
+									</li>
+									<li class="nav-item" id="nav-7">
+											<a class="nav-link" href="form_required.php">Forms/Documents</a>
+									</li>
+									<li class="nav-item" id="nav-8">
+											<a class="nav-link" href="bus_schedule.php">Bus Schedule</a>
+									</li> -->
+						<li class="nav-item dropdown btn-group" id="nav-10">
+							<a class="nav-link dropdown-toggle" id="dropdownMenu10" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">QuickLinks</a>
+							<div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu10">
+								<a href="PPT FOR UG ORIENTATION -Saakshi- For website.pdf" id="nav-10-1" class="dropdown-item">
+									Chairperson's slides</a>
+								<a href="bus_schedule.php" id="nav-10-2" class="dropdown-item">Bus Schedule</a>
+								<a href="map/index.html" id="nav-10-3" class="dropdown-item">Hotel map</a>
+								<a href="http://iitj.ac.in/department/facultyprofile.php?str=samanwita@iitj.ac.in&dept=chemistry"
+									id="nav-10-4" class="dropdown-item">Assoc. Dean (Students)</a>
+								<a href="http://iitj.ac.in/" id="nav-10-5" class="dropdown-item">IITJ</a>
+							</div>
+						</li>
+						<li class="nav-item" id="nav-9">
+							<a class="nav-link" href="https://yourdost.com/">YourDost</a>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<style>
+		.dropdown-submenu {
+			position: relative;
+		}
+
+		.dropdown-submenu>.dropdown-menu {
+			top: 0;
+			left: 100%;
+			margin-top: -6px;
+			margin-left: -1px;
+			-webkit-border-radius: 0 6px 6px 6px;
+			-moz-border-radius: 0 6px 6px;
+			border-radius: 0 6px 6px 6px;
+		}
+
+		.dropdown-submenu:hover>.dropdown-menu {
+			display: block;
+		}
+
+		.dropdown:hover>.dropdown-menu {
+			display: block;
+		}
+
+		.dropdown-submenu>a:after {
+			display: block;
+			content: " ";
+			float: right;
+			width: 0;
+			height: 0;
+			border-color: transparent;
+			border-style: solid;
+			border-width: 5px 0 5px 5px;
+			border-left-color: #ccc;
+			margin-top: 5px;
+			margin-right: -10px;
+		}
+
+		.dropdown-submenu:hover>a:after {
+			border-left-color: #fff;
+		}
+
+		.dropdown-submenu.pull-left {
+			float: none;
+		}
+
+		.dropdown-submenu.pull-left>.dropdown-menu {
+			left: -100%;
+			margin-left: 10px;
+			-webkit-border-radius: 6px 0 6px 6px;
+			-moz-border-radius: 6px 0 6px 6px;
+			border-radius: 6px 0 6px 6px;
+		}
+
+		.nav-item {
+			margin: 0 10px;
+		}
+
+		#navbarNav1 {
+			margin-left: 10%
+		}
+
+		@media screen and (max-width: 1000px) {
+			#navbarNav1 {
+				margin-left: 0%
+			}
+		}
+
+		@media screen and (max-width: 1300px) {
+			.nav-item {
+				margin: 0 1px;
+			}
+
+			#navbarNav1 {
+				margin-left: 5%
+			}
+		}
+	</style>
+	<div class="navbar-margin"></div>
+
+	<div id="root"></div>
+
+	<!--Footer-->
+	<footer class="page-footer center-on-small-only blue-grey darken-4">
+
+		<!--Footer Links-->
+		<div class="container-fluid">
+			<div class="row">
+
+				<!--First column-->
+				<div class="col-md-5 offset-md-2">
+					<h5 class="title">SWC - IITJ</h5>
+					<p>IIT Jodhpur Student Wellbeing Committee team will be happy to help you anytime.</p>
+					<p>Join our freshers' forum:</p>
+					<a class="btn btn-lg btn-fb" role="button" href="https://www.facebook.com/groups/685426511929213"
+						target="_blank"><i class="fa fa-facebook left"></i> Freshers' Forum</a>
+					<a href="general_faqs.php" class="btn btn-lg btn-mdb" role="button">Your Questions</a>
+				</div>
+				<!--/.First column-->
+
+				<hr class="hidden-md-up">
+
+				<!--Second column-->
+				<div class="col-md-3 offset-md-1">
+					<!-- <h5 class="title">Quick Links</h5>
+									<ul>
+											<li><a target="_blank" href="http://iitj.ac.in/">IIT Jodhpur</a></li>
+											<li><a target="_blank" href="http://students.iitj.ac.in/">Students' Gymkhana</a></li>
+											<li><a target="_blank" href="http://ignus.org/">Ignus</a></li>
+									</ul> -->
+					<p class="pt-5"><a
+							href="https://www.youtube.com/results?search_query=positive+attitude+and+mental+awareness">Click here</a>
+						to <i>"watch videos about developing a positive attitude and mental awareness"</i></p>
+				</div>
+				<!--/.Second column-->
+
+			</div>
+		</div>
+		<!--/.Footer Links-->
+
+		<hr>
+
+		<!--Social buttons-->
+		<div class="social-section">
+			<ul>
+				<li><a target="_blank" class="btn-floating btn-small btn-fb" href="https://www.facebook.com/SWC.IITJodhpur/"><i
+							class="fa fa-facebook"></i></a>
+				</li>
+				<li>
+					<a class="btn-floating btn-small btn-ins" href="mailto:counselling@iitj.ac.in"><i
+							class="fa fa-envelope-o"></i></a>
+				</li>
+				<li>
+					<a target="_blank" class="btn-floating btn-small btn-comm direction-link" title="Direction toward us" href="https://www.google.com/maps/dir//Indian+Institute+of+Technology+Jodhpur,
+											+NH+65,+Nagaur+Road,+Dist+Jodhpur,+Karwar,+Rajasthan+342037/@23.6259304,70.4746297"><i
+							class="fa fa-location-arrow"></i></a>
+				</li>
+			</ul>
+		</div>
+		<!--/.Social buttons-->
+		<!--Copyright-->
+		<div class="footer-copyright">
+			<div class="container-fluid">
+				© 2020 Copyright: <a href="index.php">Student Wellbeing Committee - IIT Jodhpur </a>
+			</div>
+		</div>
+		<!--/.Copyright-->
+		<script src="js/direction.js"></script>
+	</footer>
+</body>
