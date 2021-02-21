@@ -31,7 +31,7 @@ class PostImageAdmin(ImportExportActionModelAdmin):
 
     def get_id(self, instance):
         return instance.post.post_id
-    
+
     def get_name(self, instance):
         return instance.post.receiver_name
 
