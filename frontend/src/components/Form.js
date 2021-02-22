@@ -4,21 +4,24 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import ClearIcon from "@material-ui/icons/Clear";
+import PhotoAlbumIcon from "@material-ui/icons/PhotoAlbum";
+import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
 import { instance } from "../api/axios";
 
 const useStyles = (theme) => ({
 	root: {
 		"& > *": {
-			margin: theme.spacing(5),
-			width: "65%",
+			width: "100%",
 		},
 	},
 	field: {
-		margin: theme.spacing(1.5),
+		margin: theme.spacing(1.7),
+		width: "75%",
 	},
 	button: {
 		borderRadius: 30,
-		margin: theme.spacing(2),
+		margin: theme.spacing(3),
 		background: "#3f51b5",
 		color: "white",
 		"&:hover": {
@@ -46,8 +49,10 @@ class Form extends Component {
 			emailError: false,
 			titleError: false,
 			buttonDisabled: true,
+			image: [],
 			formData: {},
 		};
+		this.hiddenFileInput = React.createRef(null);
 	}
 
 	handleNameChange = (event) => {
@@ -101,6 +106,32 @@ class Form extends Component {
 		);
 	};
 
+	handleMessageChange = (event) => {
+		var val = event.target.value;
+		this.setState(
+			{
+				message: val,
+			},
+			() => {
+				this.check();
+			}
+		);
+	};
+
+	handleImageChange = (event) => {
+		const image_array = [];
+		for (let index = 0; index < event.target.files.length; index++) {
+			image_array.push(event.target.files[index]);
+		}
+		this.setState({ image: image_array }, () => {
+			this.check();
+		});
+	};
+
+	handleClick = (event) => {
+		this.hiddenFileInput.current.click();
+	};
+
 	check = () => {
 		if (
 			!this.state.nameError &&
@@ -108,7 +139,8 @@ class Form extends Component {
 			!this.state.titleError &&
 			this.state.receiver_name !== "" &&
 			this.state.receiver_email !== "" &&
-			this.state.title !== ""
+			this.state.title !== "" &&
+			(this.state.message !== "" || this.state.image.length > 0)
 		) {
 			this.setState({ buttonDisabled: false });
 		} else {
@@ -124,6 +156,7 @@ class Form extends Component {
 			var rnum = Math.floor(Math.random() * characters.length);
 			randomstring += characters.substring(rnum, rnum + 1);
 		}
+
 		this.setState({ post_id: randomstring }, async () => {
 			const data = {
 				post_id: this.state.post_id,
@@ -141,6 +174,22 @@ class Form extends Component {
 			this.setState({ formData: post_data.data }, () => {
 				console.log(`form data :${this.state.formData}`);
 				this.clearForm();
+			});
+
+			this.state.image.forEach((image) => {
+				let form_data = new FormData();
+				form_data.append("post_id", this.state.post_id);
+				form_data.append("image", image, image.name);
+				instance
+					.post("/add_image/", form_data, {
+						headers: {
+							"content-type": "multipart/form-data",
+						},
+					})
+					.then((res) => {
+						console.log(res.data);
+					})
+					.catch((error) => console.log(error));
 			});
 		});
 	};
@@ -171,6 +220,7 @@ class Form extends Component {
 					value={this.state.receiver_name}
 					onChange={this.handleNameChange}
 					error={this.state.nameError}
+					style={{ marginTop: 50 }}
 				/>
 				<TextField
 					required
@@ -202,23 +252,58 @@ class Form extends Component {
 					variant="outlined"
 					className={classes.field}
 					value={this.state.message}
-					onChange={(e) => this.setState({ message: e.target.value })}
+					onChange={this.handleMessageChange}
+					helperText="Pour your heart out!"
 				/>
 				<TextField
 					id="PS Line"
 					type="text"
 					label="PS Line"
 					variant="outlined"
+					helperText="We'll be super discrete about it!"
 					className={classes.field}
 					value={this.state.ps_line}
 					onChange={(e) => this.setState({ ps_line: e.target.value })}
 				/>
 				<div>
+					<FormControl>
+						<Button
+							id="clear_button"
+							variant="contained"
+							size="large"
+							style={{
+								borderRadius: 20,
+								background: "#3f51b5",
+								color: "white",
+							}}
+							onClick={this.handleClick}
+							endIcon={<PhotoAlbumIcon />}
+						>
+							Images
+						</Button>
+						<input
+							type="file"
+							id="image"
+							accept="image/*"
+							multiple
+							ref={this.hiddenFileInput}
+							onChange={this.handleImageChange}
+							style={{ display: "none" }}
+							disableUnderline
+							aria-describedby="my-helper-text"
+						/>
+						<FormHelperText id="my-helper-text">
+							Got a message or image to share?
+						</FormHelperText>
+					</FormControl>
+				</div>
+				<div style={{ marginTop: 20, marginBottom: 20 }}>
 					<Button
 						className={classes.button}
 						id="submit_button"
-						disabled={this.state.buttonDisabled}
+						size="large"
 						variant="contained"
+						disabled={this.state.buttonDisabled}
 						onClick={this.submitPostData}
 						endIcon={<MailOutlineIcon />}
 					>
@@ -228,6 +313,7 @@ class Form extends Component {
 						className={classes.button}
 						id="clear_button"
 						variant="contained"
+						size="large"
 						onClick={this.clearForm}
 						endIcon={<ClearIcon />}
 					>
