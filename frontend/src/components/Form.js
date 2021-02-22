@@ -168,13 +168,6 @@ class Form extends Component {
 			};
 			const res = await instance.post("/add_post/", data);
 			console.log(res);
-			const post_data = await instance.get(
-				`/posts?search=${this.state.post_id}`
-			);
-			this.setState({ formData: post_data.data }, () => {
-				console.log(`form data :${this.state.formData}`);
-				this.clearForm();
-			});
 
 			this.state.image.forEach((image) => {
 				let form_data = new FormData();
@@ -191,6 +184,7 @@ class Form extends Component {
 					})
 					.catch((error) => console.log(error));
 			});
+			this.clearForm();
 		});
 	};
 
