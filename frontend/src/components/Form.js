@@ -201,7 +201,11 @@ class Form extends Component {
 			title: "",
 			message: "",
 			ps_line: "",
+			nameError: false,
+			emailError: false,
+			titleError: false,
 			buttonDisabled: true,
+			image: [],
 		});
 	};
 
