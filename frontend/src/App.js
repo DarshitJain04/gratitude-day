@@ -5,7 +5,7 @@ function App() {
 	return (
 		<div className="App">
 			<h1>Gratitude Day</h1>
-			<Timer/>
+			<Timer />
 		</div>
 	);
 }
