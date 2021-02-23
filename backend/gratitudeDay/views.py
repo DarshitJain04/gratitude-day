@@ -37,7 +37,7 @@ class addImage(APIView):
         serializer = PostImageSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data['slug'], status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -45,4 +45,5 @@ class addImage(APIView):
 class getImages(ListCreateAPIView):
     queryset = PostImage.objects.all()
     serializer_class = PostImageSerializer
+    search_fields = ['slug',]
     filter_backends = (SearchFilter,)
