@@ -14,19 +14,15 @@ class addPost(APIView):
         data = {}
         for key in request.data.keys():
             data[key] = request.data.get(key)
-        images = data.pop('images')
         post = Post.objects.create(**data)
         post.save()
-        if(len(images)>0):
-            for image in images:
-                post.images.add(image)
         return Response(PostSerializer(post).data, status=status.HTTP_201_CREATED)
 
 
 class getPost(ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    search_fields = ['post_id', 'receiver_email']
+    search_fields = ['mail']
     filter_backends = (SearchFilter,)
 
 
@@ -37,7 +33,7 @@ class addImage(APIView):
         serializer = PostImageSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data["image"], status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

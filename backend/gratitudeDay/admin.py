@@ -7,10 +7,10 @@ from .resources import PostResource
 @admin.register(Post)
 class Post(ImportExportActionModelAdmin):
     resource_class = PostResource
-    list_display = ['post_id', 'receiver_email']
-    list_filter = ['post_id', 'receiver_email']
-    ordering = ['receiver_email']
-    search_fields = ['receiver_email']
+    list_display = ['mail']
+    list_filter = ['mail']
+    ordering = ['mail']
+    search_fields = ['mail']
 
     class Meta:
         model = Post
