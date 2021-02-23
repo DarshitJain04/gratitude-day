@@ -10,19 +10,23 @@ from rest_framework.parsers import MultiPartParser, FormParser
 
 class addPost(APIView):
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, format=None):
         data = {}
         for key in request.data.keys():
             data[key] = request.data.get(key)
+        images = data.pop('images')
         post = Post.objects.create(**data)
         post.save()
+        if(len(images)>0):
+            for image in images:
+                post.images.add(image)
         return Response(PostSerializer(post).data, status=status.HTTP_201_CREATED)
 
 
 class getPost(ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    search_fields = ['post_id']
+    search_fields = ['post_id', 'receiver_email']
     filter_backends = (SearchFilter,)
 
 
@@ -30,11 +34,10 @@ class addImage(APIView):
     parser_classes = (MultiPartParser, FormParser,)
 
     def post(self, request, format=None):
-        post_id = request.data.pop('post_id')[0]
         serializer = PostImageSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(post=Post.objects.get(post_id=post_id))
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            serializer.save()
+            return Response(serializer.data['id'], status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -42,5 +45,4 @@ class addImage(APIView):
 class getImages(ListCreateAPIView):
     queryset = PostImage.objects.all()
     serializer_class = PostImageSerializer
-    search_fields = ['post__post_id']
     filter_backends = (SearchFilter,)

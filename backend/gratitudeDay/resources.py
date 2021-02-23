@@ -1,10 +1,10 @@
 from import_export import resources
-from .models import PostImage
+from .models import Post
 
 
-class PostImageResource(resources.ModelResource):
+class PostResource(resources.ModelResource):
 
     class Meta:
-        model = PostImage
-        fields = ('post__post_id', 'post__receiver_name', 'post__receiver_email', 'post__title', 'post__message', 'post__ps_line', 'image')
-        export_order = ('post__post_id', 'post__receiver_name', 'post__receiver_email', 'post__title', 'post__message', 'post__ps_line', 'image')
+        model = Post
+        fields = ('post_id', 'receiver_email', 'message', 'images')
+        export_order = ('post_id', 'receiver_email', 'message', 'images')
