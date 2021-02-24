@@ -5,7 +5,7 @@ class Timer extends Component {
 		super();
 		this.state = {
 			now: Math.trunc(new Date().getTime() / 1000),
-			date: "2021-02-24 00:00:00",
+			date: "2021-02-24 20:00:00",
 		};
 	}
 
@@ -43,7 +43,7 @@ class Timer extends Component {
 					{this.days() ? this.days() + " d :" : ""} {this.hours()} h :{" "}
 					{this.minutes()} m : {this.seconds()} s
 				</h1>
-				<span>on 24th Feb!</span>
+				<span>just need to send existing mails...</span>
 				<p>
 					Meanwhile, just hold the thought, or even better...pen it down maybe?{" "}
 					<br />
