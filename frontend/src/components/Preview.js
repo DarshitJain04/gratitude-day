@@ -2,7 +2,7 @@ import React from "react";
 import { BACKEND } from "../api";
 import "./Preview.css";
 
-export default function Preview({ email, message, images }) {
+export default function Preview({ mail, message, images }) {
 	return (
 		<div class="wrapper">
 			<div class="wrapper-inner">
@@ -91,7 +91,7 @@ export default function Preview({ email, message, images }) {
 			</div>
 			<p className="preview-text">
 				Preview <br />
-				This is how {email ? email : "(s)he"} will receive the gratitude...🙈
+				This is how {mail ? mail : "(s)he"} will receive the gratitude...🙈
 			</p>
 		</div>
 	);

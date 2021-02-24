@@ -123,7 +123,7 @@ class Form extends Component {
 								Upload Images
 							</label>
 							<p>
-								Want to add a group photo or a handwritten letter...
+								Want to add a group photo or a handwritten letter?
 								<br />
 								We got you covered 😉
 							</p>

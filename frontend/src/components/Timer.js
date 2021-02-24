@@ -5,7 +5,7 @@ class Timer extends Component {
 		super();
 		this.state = {
 			now: Math.trunc(new Date().getTime() / 1000),
-			date: "2021-02-24 02:00:00",
+			date: "2021-02-24 00:00:00",
 		};
 	}
 

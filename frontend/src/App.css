@@ -9,7 +9,6 @@
 }
 
 #timer {
-	margin-top: 1rem;
 	font-family: "Dosis", "Roboto";
 	color: #202020;
 }
@@ -23,6 +22,7 @@ h1 {
 
 #timer > p {
 	margin: 1rem;
+	padding: 0 1rem;
 	font-size: large;
 }
 
