@@ -6,6 +6,7 @@ from .models import Post, PostImage
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.permissions import IsAuthenticated
 
 
 class addPost(APIView):
@@ -20,6 +21,7 @@ class addPost(APIView):
 
 
 class getPost(ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     search_fields = ['mail']
@@ -39,6 +41,7 @@ class addImage(APIView):
 
 
 class getImages(ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = PostImage.objects.all()
     serializer_class = PostImageSerializer
     search_fields = ['slug',]
